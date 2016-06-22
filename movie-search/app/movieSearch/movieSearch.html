@@ -1,0 +1,9 @@
+<h3>These are movie titles</h3>
+
+<!-- do ng-repeat and specify data you need -->
+<!-- 'movie' is anything  -->
+<section ng-repeat= 'movie in vm.omdbData '>
+  <a href='/movieSearch/movie/{{ movie.imdbID }}'> {{ movie.Title }}</a>
+
+
+</section>

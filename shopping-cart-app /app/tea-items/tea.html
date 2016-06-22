@@ -1,0 +1,139 @@
+<h1>This is the tea route..to China!</h1>
+
+<div class='container'>
+  <div class='row'>
+
+    <div class='col-xs-3'>
+      <label>Search by Category</label>
+      <select class='form-control'
+              ng-model='vm.searchCategory'>
+        <option value=''></option>
+        <option value='dark'>dark</option>
+        <option value='cold'>cold</option>
+        <option value='awesome'>awesome</option>
+        <option value='dry'>dry</option>
+        <option value='hot'>hot</option>
+        <option value='summer'>summer</option>
+        <option value='lucid'>lucid</option>
+        <option value='warm'>warm</option>
+        <option value='spring'>spring</option>
+      </select>
+    </div>
+
+    <div class="form-group col-xs-4 col-md-4">
+      <label class='control-label'>Search by Name</label>
+        <input type='text'
+             ng-model='searchBox'
+             class='form-control'/>
+    </div>
+
+  </div>
+</div>
+
+
+<div class='container'>
+ <div class='row'>
+   <div class='col-xs-3'>
+     <label>Sort by Price</label>
+     <select class='form-control'
+             ng-model='vm.sortPrice'>
+       <option value='price'>Lowest</option>
+       <option value='-price'>Highest</option>
+     </select>
+   </div>
+ </div>
+</div>
+
+<a href= '#/shoppingCart'
+   class='btn btn-primary col-md-4 col-md-offset-8'
+   ng-click='' >
+        Checkout | Cart ({{ vm.itemCount }})
+</a><br />
+
+<table id="Table1"
+       class="table table-bordered TableSection">
+  <thead>
+      <tr>
+          <th style="display:none;">id</th>
+          <th></th>
+          <th class="col-md-3"><b>Tea</b></th>
+          <th class="col-md-4"><b>Info</b></th>
+          <th class="col-md-3"><b>Item Quantity</b></th>
+          <th></th>
+      </tr>
+      <tr ng-repeat= "tea in vm.teas | filter:searchBox | orderBy: vm.sortPrice"
+          ng-show="vm.searchCategory == '' || tea.categories.indexOf(vm.searchCategory) > -1 ">
+          <td style="display:none;">id</td>
+          <td></td>
+          <td class="TableCell"><b></b>
+            <img src='{{ tea.imageUrl }}' />
+          </td>
+          <td class="TableCell"><b></b>
+            <h4>{{ tea.name }}</h4>
+            <p>Price: {{ tea.price | currency }}</p>
+            <p>Caffeine Scale: {{ tea.caffeineScale }}</p>
+            <p>Ingredients: {{ tea.ingredients }}</p>
+            <p>Rating: {{ tea.rating }}</p>
+            <p>In Stock?
+              <span ng-show='{{ tea.inStock }}'>Yes</span>
+              <span ng-show='{{ !tea.inStock }}'>No</span>
+            </p>
+            <p>Categories:
+              <ul>
+                <li>
+                  {{ tea.categories[0] }}
+                </li>
+                <li ng-hide='{{ !tea.categories[1] }}'>
+                  {{ tea.categories[1] }}
+                </li>
+                <li ng-hide='{{ !tea.categories[2] }}'>
+                  {{ tea.categories[2] }}
+                </li>
+              </ul>
+            </p>
+
+          </td>
+          <td class="TableCell"><b></b>
+
+             <div class='row'>
+               <div class='col-md-5 col-md-offset-5'>
+                 <label>Quantity:</label>
+                 <select name='select'
+                         class='form-control'
+                         ng-model='qty'>
+                   <option value='1' selected>1</option>
+                   <option value='2'>2</option>
+                   <option value='3'>3</option>
+                   <option value='4'>4</option>
+                   <option value='5'>5</option>
+                   <option value='6'>6</option>
+                   <option value='7'>7</option>
+                   <option value='9'>8</option>
+                   <option value='9'>9</option>
+                   <option value='10'>10</option>
+                 </select>
+                 <button type="button"
+                         class="btn btn-success adjTopMargin"
+                         ng-click=' vm.addToCart(tea, qty)'>
+                 Add to Cart
+                 </button>
+               </div>
+             </div>
+
+             <p>
+               <div class='caffeine-section'>
+                 <h4>Caffeine</h4>
+                 mg/serving: {{ tea.caffeineScale }}
+
+                 <p ng-show="{{ tea.caffeineScale < 100 }}">Rating: LOW</p>
+                 <p ng-show="{{ tea.caffeineScale > 100 }}">Rating: HIGH</p>
+                 <caffeine-meter caffeinemg='tea.caffeineScale' id='tea._id'></caffeine-meter>
+               </div>
+             </p>
+
+          </td>
+          <td></td>
+      </tr>
+  </thead>
+        <tbody></tbody>
+</table>

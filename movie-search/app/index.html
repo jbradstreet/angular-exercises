@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app='movieApp'>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" type='text/css' href='./css/main.css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"  crossorigin="anonymous"></script>
+
+    <base href='/'>
+  </head>
+  <body>
+
+    <div class='container'>
+      <div class='row'>
+        <h2 class=' text-center col-md-6 col-md-offset-3'>
+          Angular OMDb API Search
+        </h2>
+      </div>
+
+      <div class='row'>
+        <h3 class='text-center col-md-6 col-md-offset-3'>
+          Enter a Movie Title
+        </h3>
+      </div>
+
+      <section ng-controller='SearchController'>
+        <div class='row'>
+          <div class='col-lg-4 col-lg-offset-4'>
+            <div class='input-group'>
+              <input type='text'
+                class='form-control adjLeftMargin'
+                placeholder='movie title goes here'
+                ng-model='vm.title'></input>
+            </div>
+          </div>
+        </div>
+
+        <div class='row'>
+          <button
+            type='submit'
+            class='btn btn-primary center-block adjTopMargin'
+            ng-click='vm.titleSearch()'>
+            Submit!
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <hr>
+
+    <div ng-view></div>
+
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src='app.js'></script>
+    <script src='./movieSearch/movieSearch.controller.js'></script>
+    <script src='./movieInfo/movieInfo.controller.js'></script>
+  </body>
+</html>

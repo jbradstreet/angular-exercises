@@ -1,0 +1,64 @@
+<h1>This is the shopping cart page!</h1>
+
+<div class="container">
+  <div class="row">
+
+    <h2 class='col-md-4'>My Shopping Cart</h2>
+
+    <h2 class='col-md-push-4'>Order total: {{ vm.total | currency }}</h2>
+
+  </div>
+</div>
+
+<table id="Table1"
+       class="table table-bordered TableSection">
+  <thead>
+      <tr>
+          <th style="display:none;">id</th>
+          <th></th>
+          <th class="col-md-3"><b>Product</b></th>
+          <th class="col-md-4"><b>Quantity</b></th>
+          <th class="col-md-3"><b>Sub-Total</b></th>
+          <th class="col-md-3"><b>Modify Order</b></th>
+          <th></th>
+      </tr>
+      <tr ng-repeat='tea in vm.cart'>
+          <td style="display:none;">id</td>
+          <td></td>
+          <td class="col-md-3"><b></b>
+            <img src='{{ tea.imageUrl }} '></img>
+            <p> {{ tea.name }} </p>
+            <p>Caffeine Scale:
+              {{ tea.caffeineScale }}
+            </p>
+            <p>Ingredients:
+              {{ tea.ingredients }}
+            </p>
+            <p>Rating:
+              {{ tea.rating }}
+            </p>
+          </td>
+          <td class="col-md-4"><b></b>
+            <p> {{ tea.qty }} </p>
+          </td>
+          <td class="col-md-3"><b></b>
+            <p> {{ tea.price | currency }} </p>
+          </td>
+          <td class="col-md-3"><b></b>
+            <a href="#/shoppingCart/edit/{{ tea._id }}"
+               class="btn btn-warning">
+              Edit
+            </a>
+            <button type="button"
+                    class="btn btn-danger"
+                    ng-click='vm.deleteItem(item)'>
+              Delete
+            </button>
+          </td>
+          <td></td>
+      </tr>
+      <p>
+        {{ vm.cart }}
+      </p>
+
+  </thead>

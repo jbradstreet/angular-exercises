@@ -1,0 +1,93 @@
+<p>
+  This is the edit page!!
+</p>
+
+<div class="container">
+  <div class="row">
+
+    <h2 class='col-md-4'>My Shopping Cart</h2>
+
+    <h2 class='col-md-push-4'>Order total: {{ vm.total | currency }}</h2>
+
+  </div>
+</div>
+
+<table id="Table1"
+       class="table table-bordered TableSection">
+  <thead>
+      <tr>
+          <th style="display:none;">id</th>
+          <th></th>
+          <th class="col-md-3"><b>Product</b></th>
+          <th class="col-md-4"><b>Quantity</b></th>
+          <th class="col-md-3"><b>Sub-Total</b></th>
+          <th class="col-md-3"><b>Modify Order</b></th>
+          <th></th>
+      </tr>
+      <tr>
+          <td style="display:none;">id</td>
+          <td></td>
+          <td class="col-md-3"><b></b>
+            <img src='{{ vm.cart[i].imageUrl }} '></img>
+            <p> {{ vm.cart[0].name }} </p>
+            <p>Caffeine Scale:
+              {{ vm.cart[0].caffeineScale }}
+            </p>
+            <p>Ingredients:
+              {{ vm.cart[0].ingredients }}
+            </p>
+            <p>Rating:
+              {{ vm.cart[0].rating }}
+            </p>
+          </td>
+
+          <td class="col-md-4"><b></b>
+            <!-- <p> {{ vm.cart[0].qty }} </p> -->
+
+            <div class='row'>
+              <div class='col-md-5 col-md-offset-5'>
+                <label>Quantity:</label>
+                <select name='select'
+                        class='form-control'
+                        ng-model='qty'>
+                  <option value='1' selected>1</option>
+                  <option value='2'>2</option>
+                  <option value='3'>3</option>
+                  <option value='4'>4</option>
+                  <option value='5'>5</option>
+                  <option value='6'>6</option>
+                  <option value='7'>7</option>
+                  <option value='9'>8</option>
+                  <option value='9'>9</option>
+                  <option value='10'>10</option>
+                </select>
+                <a type="button"
+                   class="btn btn-success adjTopMargin"
+                   ng-click='vm.cart[0].qty = qty'
+                   href='#/shoppingCart'>
+                Save
+                </a>
+              </div>
+            </div>
+          </td>
+
+          <td class="col-md-3"><b></b>
+            <p> {{ vm.total | currency }} </p>
+          </td>
+          <td class="col-md-3"><b></b>
+            <a href="#/shoppingCart/edit"
+               class="btn btn-warning">
+              Edit
+            </a>
+            <button type="button"
+                    class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+          <td></td>
+      </tr>
+      <p>
+        {{ vm.cart }}
+      </p>
+
+  </thead>

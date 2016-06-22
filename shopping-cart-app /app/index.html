@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-cloak ng-app='teaApp'>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Angular Shopping Cart</title>
+
+    <link rel="stylesheet" href="./css/main.css" charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.js"  crossorigin="anonymous"></script>
+
+    <base href='/'>
+  </head>
+  <body>
+
+    <div class='container'>
+      <div class='row'>
+        <h1 class='text-center col-md-6 col-md-offset-3'>Tea Shop!</h1>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-default">
+      <div class='container'>
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="#/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div ng-view>
+    </div>
+
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src='./tea-items/tea.controller.js'></script>
+    <script src='./shopping-cart/cart.controller.js'></script>
+    <script src='./tea-items/tea.service.js'></script>
+    <script src='./edit-order/edit.controller.js'></script>
+  </body>
+</html>

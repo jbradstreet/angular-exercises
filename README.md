@@ -1,6 +1,6 @@
 # angular-exercises
 
-These are small projects showcasing my evolution with using AngularJS.
+These are small projects showcasing my evolution in using AngularJS.
 
 * Reddit Clone - demonstrate basic data binding concepts and use of the controller in Angular, along with some form validation.
 * Movie Search - demonstrate routing to different pages.
